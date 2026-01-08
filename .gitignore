@@ -1,0 +1,33 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+.idea
+
+# database
+*.sqlite3*
+
+# temporary files
+*.toml~
+
+# env
+*.env
+*.env.example
+
+# logs
+*.log
+log/
+
+media/
+static/
+
+# test artifacts
+test_output/
+test_project*/
