@@ -39,6 +39,5 @@ _exclude:
   - "**/*.pyc"
   - ".vscode"
   - "test_output"
-  - "README.md"
   - ".trae"
   - "uv.lock"
