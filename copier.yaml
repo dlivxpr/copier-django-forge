@@ -37,7 +37,5 @@ _exclude:
   - ".venv"
   - "__pycache__"
   - "**/*.pyc"
-  - ".vscode"
   - "test_output"
-  - ".trae"
   - "uv.lock"
