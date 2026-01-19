@@ -28,6 +28,14 @@ python_version:
   help: Python version
   default: "3.12"
 
+project_type:
+  type: str
+  help: Project type (API only or Full Stack with Nginx)
+  choices:
+    - api
+    - full_stack
+  default: full_stack
+
 _exclude:
   - ".git"
   - ".copier-config.yaml"
@@ -39,3 +47,4 @@ _exclude:
   - "**/*.pyc"
   - "test_output"
   - "uv.lock"
+  - "{% if project_type == 'api' %}docker/nginx*{% endif %}"

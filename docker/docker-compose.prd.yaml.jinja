@@ -1,6 +1,8 @@
 networks:
+{% if project_type == 'full_stack' %}
   nginx-network:
     external: true
+{% endif %}
   {{project_slug}}-network:
     driver: bridge
     internal: true
@@ -16,6 +18,7 @@ volumes:
     name: {{project_slug}}_redis
 
 services:
+{% if project_type == 'full_stack' %}
   {{project_slug}}-nginx:
     image: nginx:1.27-alpine
     container_name: {{project_slug}}-nginx
@@ -36,7 +39,7 @@ services:
       retries: 3
       start_period: 10s
     restart: unless-stopped
-
+{% endif %}
   db:
     image: postgres:15-alpine
     container_name: {{project_slug}}-db
@@ -86,10 +89,17 @@ services:
     environment:
       DB_HOST: db
       REDIS_HOST: redis
+{% if project_type == 'full_stack' %}
       FORCE_SCRIPT_NAME: /{{project_slug}}
+{% endif %}
     working_dir: /app
+{% if project_type == 'full_stack' %}
     expose:
       - "8000"
+{% else %}
+    ports:
+      - "8000:8000"
+{% endif %}
     volumes:
       - {{project_slug}}_static:/app/static
       - {{project_slug}}_media:/app/media
